@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's play a game</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's play!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <link href="/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <script src="constants.js"></script>
+    <script src="House.js"></script>
+    <script src="Player.js"></script>
+    <script src="Obstacle.js"></script>
+    <script src="Game.js"></script>
+    <script src="main.js"></script>
+
+    <!--The title and the instructions of the game-->
+    <div class="intro">
+      <h1>Here will be the name of the game</h1>
+      <p>Here will be the instructions of the game</p>
+    </div>
+
+    <!--Life level of a player-->
+    <div class="life-level">
+      <table>
+        <thead>
+          <tr>
+            <th id="level-1"></th>
+            <th id="level-2"></th>
+            <th id="level-3"></th>
+            <th id="level-4"></th>
+            <th id="level-5"></th>
+            <th id="level-6"></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <!--Reset button-->
+    <button>Play again!</button>
+  </body>
 </html>
