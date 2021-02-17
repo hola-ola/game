@@ -1,2 +1,2 @@
 let WIDTH = 1200;
-let HEIGHT = 600;
+let HEIGHT = 500;

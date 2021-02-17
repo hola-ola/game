@@ -12,26 +12,14 @@ body {
 
 .intro h1 {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: antiquewhite;
-}
-
-.intro p {
-    text-align: center;
-    margin-bottom: 30px;
-    color: antiquewhite;
-}
-
-
-
-h2 {
+    margin-top: 20px;
+    margin-bottom: 15px;
     color: antiquewhite;
 }
 
 .life-level {
     position: absolute;
-    top: 750px;
+    top: 550px;
 }
 
 .life-level table {
@@ -70,7 +58,7 @@ h2 {
 
 button {
     position: absolute;
-    top: 880px;
+    top: 660px;
     height: 40px;
     width: 150px;
     font-size: 24px;
