@@ -1,8 +1,8 @@
 //  The Character is the class that holds all of the player's information
 class Player {
     constructor() {
-      this.x = 150;
-      this.y = 150;
+      this.x = 0;
+      this.y = 0;
       this.width = 30;
       this.height = 30;
     }
