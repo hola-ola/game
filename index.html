@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
     <link href="./style.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="body1">
     <script src="constants.js"></script>
     <script src="Player.js"></script>
     <script src="Obstacle.js"></script>
@@ -16,11 +16,11 @@
 
     <!--The title and the instructions of the game-->
     <div class="intro">
-      <h1>The Simple Game</h1>
+      <h1 id="title" class="title1">The Simple Game</h1>
     </div>
 
     <!--Counters-->
-    <div class="counters">
+    <div id="counters" class="count1">
       <div class="time-counter">
         <h2 id="time-counter">Time: 00:00:00</h2>
       </div>
@@ -52,6 +52,6 @@
     </div>
 
     <!--Reset button-->
-    <button>Play again!</button>
+    <button class="btn1" id="reset">Play again!</button>
   </body>
 </html>

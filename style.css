@@ -3,38 +3,71 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.body1 {
     background-color: black;
+}
+
+.body2 {
+    background-color:antiquewhite;
+}
+
+.body3 {
+    background-color: blue;
 }
 
 .p5Canvas {
     position: relative;
 }
 
-.intro h1 {
+h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 0px;
-    color: antiquewhite;
     font-size: 50px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: lighter;
 }
 
-.counters {
+.title1 {
+    color: antiquewhite;
+}
+
+.title2 {
+    color: black;
+}
+
+.title3 {
+    color: orangered;
+}
+
+#counters {
     display: flex;
 }
 
-.counters h2 {
-    color: antiquewhite;
+#counters h2 {
     font-weight: 300;
     font-size: 24px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.counters div {
+#counters div {
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 0px;
+}
+
+.count1 {
+    color: antiquewhite;
+}
+
+.count2 {
+    color: black;
+}
+
+.count3 {
+    color: yellowgreen;
 }
 
 .life-level {
@@ -83,7 +116,20 @@ button {
     width: 150px;
     font-size: 24px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: antiquewhite;
     border: none;
     border-radius: 5px;
+}
+
+.btn1 {
+    background-color:antiquewhite;
+}
+
+.btn2 {
+    background-color: black;
+    color: antiquewhite;
+}
+
+.btn3 {
+    background-color: blue;
+    color: orange;
 }

@@ -7,6 +7,7 @@ class Game {
       this.timeCount = 0;
       this.pointsCount = 0;
       this.levelCount = 1;
+      this.background = "antiquewhite";
     }
     draw() {
       this.player.draw();
@@ -163,7 +164,8 @@ class Game {
 
     countPoints() {
       let pointsCounter = document.getElementById("points-counter");
-      if (this.timeCount % 10 == 0 && this.collisionCount < 6) {
+      // To correct later – five should become 10 or higher
+      if (this.timeCount % 5 == 1 && this.timeCount > 5) {
           this.pointsCount += 10;
           pointsCounter.innerText = `Points: ${this.pointsCount}`;
       }
@@ -171,13 +173,39 @@ class Game {
 
     countLevel() {
       let levelCounter = document.getElementById("level-counter");
-      if (this.timeCount == 100 && this.collisionCount < 6) {
-          this.levelCount += 1;
-          levelCounter.innerText = `Level: ${this.levelCount}`;
+      // Points needed to get to level 2 – to correct later
+      if (this.pointsCount == 10) {
+          this.levelCount = 2;
+      }
+      // Points needed to get to level 3 – to correct later
+      if (this.pointsCount == 20) {
+        this.levelCount = 3;
+      }
+        levelCounter.innerText = `Level: ${this.levelCount}`;
+      
+      //Context elements
+      let button = document.getElementById("reset");
+      let title = document.getElementById("title");
+      let counters = document.getElementById("counters")
+      let body = document.querySelector("body");
+
+      // Level 2 
+      if (this.levelCount == 2) {
+        button.classList.add("btn2");
+        title.classList.add("title2");
+        counters.classList.add("count2");
+        body.classList.add("body2");
+        this.background = "black";
+      }
+
+      // Level 23
+      if (this.levelCount == 3) {
+        button.classList.add("btn3");
+        title.classList.add("title3");
+        counters.classList.add("count3");
+        body.classList.add("body3");
+        this.background = "yellow";
       }
     }
-
-    playAgain() {
-      let playAgainButton
-    }
-} 
+    
+}

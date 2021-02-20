@@ -1,17 +1,26 @@
 //  The Character is the class that holds all of the player's information
 class Player {
     constructor() {
-      this.x = 100;
+      this.x = 0;
       this.y = 200;
       this.width = 30;
       this.height = 30;
+      this.velocity = 0;
+      this.start = 100;
     }
 
     draw() {
-        let c = color("black");
+        let c = color("darkgrey");
         fill(c);
         noStroke();
         rect(this.x, this.y, this.width, this.height);
+
+        this.velocity += GRAVITY;
+        this.x += this.velocity;
+        if (this.x >= this.start) {
+            this.x = this.start;
+            this.velocity = 0;
+        }
     }
 
     runUp() {

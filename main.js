@@ -5,11 +5,11 @@ let game = new Game();
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
-  setInterval(countTime, 1000);
+  resetGame();
 }
 
 function draw() {
-    background("antiquewhite");
+    background(game.background);
     game.draw();
 }
 
@@ -17,6 +17,10 @@ function countTime() {
   game.countTime();
   game.countPoints();
   game.countLevel();
+}
+
+function resetGame() {
+  setInterval(countTime, 1000);
 }
 
 
