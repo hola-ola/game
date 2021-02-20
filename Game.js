@@ -67,6 +67,7 @@ class Game {
         } else if (this.collisionCount == 6) {
           lifeLevel1.style.visibility = "hidden";
           console.log("You are dead");
+          noLoop();
         }
     }
   
