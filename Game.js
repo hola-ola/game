@@ -1,8 +1,6 @@
 class Game {
     constructor() {
       this.player = new Player();
-      this.startHouse = new House(0, 0, 50, 50);
-      this.endHouse = new House(1150, 450, 50, 50);
       this.obstacles1 = [];
       this.obstacles2 = [];
       this.obstacles3 = [];
@@ -23,10 +21,6 @@ class Game {
         if (keyIsDown(39)) {
             this.player.runRight();
         }
-
-      this.startHouse.draw();  
-
-      this.endHouse.draw();  
 
       // Obstacle 1: square orange
       if (frameCount % 120 === 0) {
@@ -68,6 +62,29 @@ class Game {
         }
     });
 
+       // Obstacle 3: circle green
+      if (frameCount % 60 === 0) {
+        this.obstacles3.push(new Obstacle3());
+      }
+  
+      this.obstacles3.forEach((obstacle3, index) => {
+        obstacle3.draw();
+
+        // in this case we are checking that whenever an obstacle is coliding with the player
+        if (this.collisionCheckRound(obstacle3, this.player)) {
+            obstacle3.isColliding = true;
+            this.collisionCount += 1;
+            console.log("Collided with a circle!")
+        }
+
+        // everytime the obstacle goes off canvas, remove it from the array
+        if (obstacle3.x + obstacle3.d <= 0) {
+          this.obstacles3.splice(index, 1);
+        }
+    }); 
+
+    
+
     let lifeLevel6 = document.getElementById("level-6")
     let lifeLevel5 = document.getElementById("level-5")
     let lifeLevel4 = document.getElementById("level-4")
@@ -96,25 +113,21 @@ class Game {
       if (obstacle.isColliding) {
         return false;
       }
-      //   player.left + player.width (players.rightSide)
       //  if player's right side is to the left of the obstacle's left
       if (player.x + player.width < obstacle.x) {
         return false;
       }
   
-      //  obstacle's left and obstacle width (obstacle.rightSide)
       // if obstacle's right side is to the left of player's left
       if (obstacle.x + obstacle.width < player.x) {
         return false;
       }
   
-      // player.topSide > obstacle.TopSide + obstacle.height (obstacle.Bottom)
       // player top side is below obstacle's bottom side
       if (player.y > obstacle.y + obstacle.height) {
         return false;
       }
   
-      //  obstacle.topSide > player.topSide + player.height (player.bottomSide)
       //  obstacle top side is below the player's bottom side
       if (obstacle.y > player.y + player.height) {
         return false;
@@ -126,29 +139,24 @@ class Game {
       if (obstacle.isColliding) {
         return false;
       }
-      //   player.left + player.width (players.rightSide)
-      //  if player's right side is to the left of the obstacle's left
-      if (player.x + player.width > obstacle.x - (obstacle.d / 2)) {
-        return false;
+      let testX = obstacle.x;
+      let testY = obstacle.y;
+
+      if (obstacle.x < player.x) {
+        testX = player.x;
+      } else if (obstacle.x > player.x + player.width) {
+        testX = player.x + player.width;
+      } 
+      if (obstacle.y < player.y) {
+        testY = player.y;
+      } else if (obstacle.y > player.y + player.height) {
+        testY = player.y + player.height;
       }
-  
-      //  obstacle's left and obstacle width (obstacle.rightSide)
-      // if obstacle's right side is to the left of player's left
-      if (obstacle.x + (obstacle.d / 2) < player.x) {
-        return false;
+      let d = dist(obstacle.x, obstacle.y, testX, testY);
+      let rad = obstacle.d / 2;
+      if(d <= rad) {
+        return true;
       }
-  
-      // player.topSide > obstacle.TopSide + obstacle.height (obstacle.Bottom)
-      // player top side is below obstacle's bottom side
-      if (player.y > obstacle.y + obstacle.d) {
-        return false;
-      }
-  
-      //  obstacle.topSide > player.topSide + player.height (player.bottomSide)
-      //  obstacle top side is below the player's bottom side
-      if (obstacle.y + obstacle.d > player.y + player.height) {
-        return false;
-      }
-      return true;
+      return false;
     }
 } 

@@ -1,8 +1,8 @@
 class Obstacle1 {
   constructor() {
-    this.x = width;
     this.width = 50;
     this.height = 50;
+    this.x = width;
     this.y = random(0, height);
     this.isColliding = false;
   }
@@ -16,12 +16,10 @@ class Obstacle1 {
   }
 }
 
-class Obstacle2 {
-  constructor() {
-    this.x = 1200;
-    this.y = random(0, this.x);
+class Obstacle2 extends Obstacle1 {
+  constructor(x, y, isColliding) {
+    super(x, y, isColliding);
     this.d = 50;
-    this.isColliding = false;
   }
 
   draw() {
@@ -33,11 +31,9 @@ class Obstacle2 {
   }
 }
 
-
-  class Obstacle3 {
-    constructor() {
-      this.x = 1200;
-      this.y = random(0, this.x);
+  class Obstacle3 extends Obstacle2 {
+    constructor(x, y, isColliding, d) {
+      super(x, y, isColliding);
       this.d = 30;
     }
   

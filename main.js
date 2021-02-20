@@ -12,9 +12,4 @@ function draw() {
     game.draw();
 }
 
-function lifeLevel() {
-  if(game.collisionCount = 1) {
-    console.log("Lost a life");
-  }
-}
 
