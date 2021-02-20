@@ -4,6 +4,9 @@ class Game {
       this.obstaclesSquare = [];
       this.obstaclesRound = [];
       this.collisionCount = 0;
+      this.timeCount = 0;
+      this.pointsCount = 0;
+      this.levelCount = 1;
     }
     draw() {
       this.player.draw();
@@ -141,5 +144,40 @@ class Game {
         return true;
       }
       return false;
+    }
+
+    countTime() {
+      let timeCounter = document.getElementById("time-counter")
+
+      let hours = Math.floor(this.timeCount / 3600);
+      let minutes = Math.floor(this.timeCount / 60);
+      let seconds = this.timeCount % 60;
+      let timeArray = [hours, minutes, seconds];
+
+      timeCounter.innerText = `Time: ${timeArray[0]}:0${timeArray[1]}:${timeArray[2]}`;
+
+      if (this.collisionCount < 6) {
+        this.timeCount++;
+      }
+    }
+
+    countPoints() {
+      let pointsCounter = document.getElementById("points-counter");
+      if (this.timeCount % 10 == 0 && this.collisionCount < 6) {
+          this.pointsCount += 10;
+          pointsCounter.innerText = `Points: ${this.pointsCount}`;
+      }
+    }
+
+    countLevel() {
+      let levelCounter = document.getElementById("level-counter");
+      if (this.timeCount == 100 && this.collisionCount < 6) {
+          this.levelCount += 1;
+          levelCounter.innerText = `Level: ${this.levelCount}`;
+      }
+    }
+
+    playAgain() {
+      let playAgainButton
     }
 } 
