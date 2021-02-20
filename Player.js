@@ -8,7 +8,10 @@ class Player {
     }
 
     draw() {
-      rect(this.x, this.y, this.width, this.height);
+        let c = color("black");
+        fill(c);
+        noStroke();
+        rect(this.x, this.y, this.width, this.height);
     }
 
     runUp() {
