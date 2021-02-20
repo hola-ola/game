@@ -7,11 +7,11 @@ class Player {
       this.height = 30;
       this.velocity = 0;
       this.start = 100;
+      this.color = "darkgrey";
     }
 
     draw() {
-        let c = color("darkgrey");
-        fill(c);
+        fill(this.color);
         noStroke();
         rect(this.x, this.y, this.width, this.height);
 

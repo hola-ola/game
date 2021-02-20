@@ -10,6 +10,7 @@ class Game {
       this.background = "antiquewhite";
     }
     draw() {
+      this.player.color = "blue";
       this.player.draw();
 
         if (keyIsDown(38)) {
@@ -19,7 +20,7 @@ class Game {
             this.player.runDown();
         }
 
-      // Square obstacles
+      // Create square obstacles
       if (frameCount % 120 === 0) {
         this.obstaclesSquare.push(new Obstacle1());
       }
@@ -30,19 +31,17 @@ class Game {
       this.obstaclesSquare.forEach((obstacle, index) => {
         obstacle.draw();
 
-        // in this case we are checking that whenever an obstacle is coliding with the player
         if (this.collisionCheckSquare(obstacle, this.player)) {
             obstacle.isColliding = true;
             this.collisionCount += 1;
         }
 
-        // everytime the obstacle goes off canvas, remove it from the array
         if (obstacle.x + obstacle.width <= 0) {
           this.obstaclesSquare.splice(index, 1);
         }
     });
 
-      // Round obstacles
+      // Create round obstacles
       if (frameCount % 180 === 0) {
         this.obstaclesRound.push(new Obstacle2());
       }
@@ -54,24 +53,22 @@ class Game {
       if (frameCount % 120 === 0) {
         this.obstaclesRound.push(new Obstacle4());
       }
-  
+      
       this.obstaclesRound.forEach((obstacle, index) => {
         obstacle.draw();
 
-        // in this case we are checking that whenever an obstacle is coliding with the player
         if (this.collisionCheckRound(obstacle, this.player)) {
             obstacle.isColliding = true;
             this.collisionCount += 1;
             console.log("Collided with a circle!")
         }
 
-        // everytime the obstacle goes off canvas, remove it from the array
         if (obstacle.x + obstacle.d <= 0) {
           this.obstaclesRound.splice(index, 1);
         }
     });
 
-
+    // Count life leve of the player based on the number of collisions
     let lifeLevel6 = document.getElementById("level-6")
     let lifeLevel5 = document.getElementById("level-5")
     let lifeLevel4 = document.getElementById("level-4")
@@ -96,32 +93,30 @@ class Game {
     }
     }
   
+    // Check collision between two square objects
     collisionCheckSquare(obstacle, player) {
       if (obstacle.isColliding) {
         return false;
       }
-      //  if player's right side is to the left of the obstacle's left
       if (player.x + player.width < obstacle.x) {
         return false;
       }
   
-      // if obstacle's right side is to the left of player's left
       if (obstacle.x + obstacle.width < player.x) {
         return false;
       }
   
-      // player top side is below obstacle's bottom side
       if (player.y > obstacle.y + obstacle.height) {
         return false;
       }
   
-      //  obstacle top side is below the player's bottom side
       if (obstacle.y > player.y + player.height) {
         return false;
       }
       return true;
     }
 
+    // Cheeck collision between a square and a circle
     collisionCheckRound(obstacle, player) {
       if (obstacle.isColliding) {
         return false;
@@ -147,6 +142,7 @@ class Game {
       return false;
     }
 
+    // Count the time up
     countTime() {
       let timeCounter = document.getElementById("time-counter")
 
@@ -162,6 +158,7 @@ class Game {
       }
     }
 
+    // Count points based on survival time
     countPoints() {
       let pointsCounter = document.getElementById("points-counter");
       // To correct later – five should become 10 or higher
@@ -171,6 +168,7 @@ class Game {
       }
     }
 
+    // Count levels based on the number of points
     countLevel() {
       let levelCounter = document.getElementById("level-counter");
       // Points needed to get to level 2 – to correct later
@@ -183,7 +181,7 @@ class Game {
       }
         levelCounter.innerText = `Level: ${this.levelCount}`;
       
-      //Context elements
+      //Elements to change when level changes
       let button = document.getElementById("reset");
       let title = document.getElementById("title");
       let counters = document.getElementById("counters")
@@ -198,7 +196,7 @@ class Game {
         this.background = "black";
       }
 
-      // Level 23
+      // Level 3
       if (this.levelCount == 3) {
         button.classList.add("btn3");
         title.classList.add("title3");
@@ -207,5 +205,7 @@ class Game {
         this.background = "yellow";
       }
     }
+    // In order to adjust the player and the obstacles to new level, look for line 13;
+    // You can modify certain items of player/ obstalces from the game
     
 }
