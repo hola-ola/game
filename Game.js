@@ -1,9 +1,8 @@
 class Game {
     constructor() {
       this.player = new Player();
-      this.obstacles1 = [];
-      this.obstacles2 = [];
-      this.obstacles3 = [];
+      this.obstaclesSquare = [];
+      this.obstaclesRound = [];
       this.collisionCount = 0;
     }
     draw() {
@@ -12,78 +11,62 @@ class Game {
         if (keyIsDown(38)) {
             this.player.runUp();
         }
-        if (keyIsDown(37)) {
-            this.player.runLeft();
-        }
         if (keyIsDown(40)) {
             this.player.runDown();
         }
-        if (keyIsDown(39)) {
-            this.player.runRight();
-        }
 
-      // Obstacle 1: square orange
+      // Square obstacles
       if (frameCount % 120 === 0) {
-        this.obstacles1.push(new Obstacle1());
+        this.obstaclesSquare.push(new Obstacle1());
       }
-      this.obstacles1.forEach((obstacle1, index) => {
-        obstacle1.draw();
+
+      if (frameCount % 120 === 0) {
+        this.obstaclesSquare.push(new Obstacle5());
+      }      
+      this.obstaclesSquare.forEach((obstacle, index) => {
+        obstacle.draw();
 
         // in this case we are checking that whenever an obstacle is coliding with the player
-        if (this.collisionCheckSquare(obstacle1, this.player)) {
-            obstacle1.isColliding = true;
+        if (this.collisionCheckSquare(obstacle, this.player)) {
+            obstacle.isColliding = true;
             this.collisionCount += 1;
         }
 
         // everytime the obstacle goes off canvas, remove it from the array
-        if (obstacle1.x + obstacle1.width <= 0) {
-          this.obstacles1.splice(index, 1);
+        if (obstacle.x + obstacle.width <= 0) {
+          this.obstaclesSquare.splice(index, 1);
         }
     });
 
-      // Obstacle 2: circle purple
+      // Round obstacles
       if (frameCount % 180 === 0) {
-        this.obstacles2.push(new Obstacle2());
+        this.obstaclesRound.push(new Obstacle2());
+      }
+
+      if (frameCount % 60 === 0) {
+        this.obstaclesRound.push(new Obstacle3());
+      }
+
+      if (frameCount % 120 === 0) {
+        this.obstaclesRound.push(new Obstacle4());
       }
   
-      this.obstacles2.forEach((obstacle2, index) => {
-        obstacle2.draw();
+      this.obstaclesRound.forEach((obstacle, index) => {
+        obstacle.draw();
 
         // in this case we are checking that whenever an obstacle is coliding with the player
-        if (this.collisionCheckRound(obstacle2, this.player)) {
-            obstacle2.isColliding = true;
+        if (this.collisionCheckRound(obstacle, this.player)) {
+            obstacle.isColliding = true;
             this.collisionCount += 1;
             console.log("Collided with a circle!")
         }
 
         // everytime the obstacle goes off canvas, remove it from the array
-        if (obstacle2.x + obstacle2.d <= 0) {
-          this.obstacles2.splice(index, 1);
+        if (obstacle.x + obstacle.d <= 0) {
+          this.obstaclesRound.splice(index, 1);
         }
     });
 
-       // Obstacle 3: circle green
-      if (frameCount % 60 === 0) {
-        this.obstacles3.push(new Obstacle3());
-      }
-  
-      this.obstacles3.forEach((obstacle3, index) => {
-        obstacle3.draw();
-
-        // in this case we are checking that whenever an obstacle is coliding with the player
-        if (this.collisionCheckRound(obstacle3, this.player)) {
-            obstacle3.isColliding = true;
-            this.collisionCount += 1;
-            console.log("Collided with a circle!")
-        }
-
-        // everytime the obstacle goes off canvas, remove it from the array
-        if (obstacle3.x + obstacle3.d <= 0) {
-          this.obstacles3.splice(index, 1);
-        }
-    }); 
-
-    
 
     let lifeLevel6 = document.getElementById("level-6")
     let lifeLevel5 = document.getElementById("level-5")
