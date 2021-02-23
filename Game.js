@@ -6,11 +6,10 @@ class Game {
       this.collisionCount = 0;
       this.timeCount = 0;
       this.pointsCount = 0;
-      this.levelCount = 1;
+      this.levelCount = 3;
       this.background = "antiquewhite";
     }
     draw() {
-      this.player.color = "blue";
       this.player.draw();
 
         if (keyIsDown(38)) {
@@ -20,16 +19,32 @@ class Game {
             this.player.runDown();
         }
 
-      // Create square obstacles
+      // Level 1: Create square obstacles
       if (frameCount % 120 === 0) {
         this.obstaclesSquare.push(new Obstacle1());
       }
 
       if (frameCount % 120 === 0) {
         this.obstaclesSquare.push(new Obstacle5());
-      }      
+      }  
+      
+      // Level 2: Create square obstacles
+      if (this.levelCount !== 2) {
+        if (frameCount % 90 === 0) {
+          this.obstaclesSquare.push(new Obstacle1());
+        }
+  
+        if (frameCount % 90 === 0) {
+          this.obstaclesSquare.push(new Obstacle5());
+        }
+      }
+
       this.obstaclesSquare.forEach((obstacle, index) => {
-        obstacle.draw();
+        if (this.levelCount < 2) {
+          obstacle.draw();
+        } else if (this.levelCount = 3) {
+          obstacle.drawLevel3()
+        }
 
         if (this.collisionCheckSquare(obstacle, this.player)) {
             obstacle.isColliding = true;
@@ -41,7 +56,7 @@ class Game {
         }
     });
 
-      // Create round obstacles
+      // Level 1: Create round obstacles
       if (frameCount % 180 === 0) {
         this.obstaclesRound.push(new Obstacle2());
       }
@@ -53,9 +68,28 @@ class Game {
       if (frameCount % 120 === 0) {
         this.obstaclesRound.push(new Obstacle4());
       }
-      
+
+      // Level 2: Create round obstacles
+      if (this.levelCount !== 1) {
+        if (frameCount % 170 === 0) {
+          this.obstaclesRound.push(new Obstacle2());
+        }
+
+        if (frameCount % 70 === 0) {
+          this.obstaclesRound.push(new Obstacle3());
+        }
+
+        if (frameCount % 110 === 0) {
+          this.obstaclesRound.push(new Obstacle4());
+        }
+      }
+
       this.obstaclesRound.forEach((obstacle, index) => {
-        obstacle.draw();
+        if (this.levelCount < 2) {
+          obstacle.draw();
+        } else if (this.levelCount = 3) {
+          obstacle.drawLevel3()
+        }
 
         if (this.collisionCheckRound(obstacle, this.player)) {
             obstacle.isColliding = true;
@@ -173,7 +207,7 @@ class Game {
       let levelCounter = document.getElementById("level-counter");
       // Points needed to get to level 2 – to correct later
       if (this.pointsCount == 10) {
-          this.levelCount = 2;
+          this.levelCount = 3;
       }
       // Points needed to get to level 3 – to correct later
       if (this.pointsCount == 20) {
@@ -194,6 +228,8 @@ class Game {
         counters.classList.add("count2");
         body.classList.add("body2");
         this.background = "black";
+        this.player.color = "antiquewhite";
+        
       }
 
       // Level 3
@@ -203,6 +239,7 @@ class Game {
         counters.classList.add("count3");
         body.classList.add("body3");
         this.background = "yellow";
+        this.player.color = "black";
       }
     }
     // In order to adjust the player and the obstacles to new level, look for line 13;

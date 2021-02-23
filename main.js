@@ -5,7 +5,7 @@ let game = new Game();
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
-  resetGame();
+  setInterval(countTime, 1000);
 }
 
 function draw() {
@@ -17,10 +17,6 @@ function countTime() {
   game.countTime();
   game.countPoints();
   game.countLevel();
-}
-
-function resetGame() {
-  setInterval(countTime, 1000);
 }
 
 

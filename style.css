@@ -39,7 +39,7 @@ h1 {
 }
 
 .title3 {
-    color: orangered;
+    color: aquamarine;
 }
 
 #counters {
@@ -67,7 +67,7 @@ h1 {
 }
 
 .count3 {
-    color: yellowgreen;
+    color: aquamarine;
 }
 
 .life-level {
@@ -130,6 +130,6 @@ button {
 }
 
 .btn3 {
-    background-color: blue;
-    color: orange;
+    background-color: aquamarine;
+    color: darkviolet;
 }

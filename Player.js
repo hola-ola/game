@@ -3,11 +3,11 @@ class Player {
     constructor() {
       this.x = 0;
       this.y = 200;
-      this.width = 30;
-      this.height = 30;
+      this.width = 25;
+      this.height = 25;
       this.velocity = 0;
       this.start = 100;
-      this.color = "darkgrey";
+      this.color = "black";
     }
 
     draw() {
