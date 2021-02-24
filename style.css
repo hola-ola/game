@@ -17,6 +17,10 @@ body {
     background-color: blue;
 }
 
+.body4 {
+    background-color: deeppink;
+}
+
 .p5Canvas {
     position: relative;
 }
@@ -40,6 +44,10 @@ h1 {
 
 .title3 {
     color: aquamarine;
+}
+
+.title4 {
+    color: darkblue;
 }
 
 #counters {
@@ -68,6 +76,10 @@ h1 {
 
 .count3 {
     color: aquamarine;
+}
+
+.count4 {
+    color: darkblue;
 }
 
 .life-level {
@@ -132,4 +144,9 @@ button {
 .btn3 {
     background-color: aquamarine;
     color: darkviolet;
+}
+
+.btn3 {
+    background-color: greenyellow;
+    color: indigo;
 }

@@ -10,19 +10,25 @@ class Obstacle1 {
 
   
   draw() {
-    // Level 1 and 2
+    // Level 1 and 2 look
     let c = color("orange");
     fill(c);
-    noStroke();
     rect(this.x, this.y, this.width, this.height);
     this.x -= 3;
   }
 
   drawLevel3() {
-    // Level 1 and 2
+    // Level 3 look
     let c = color("coral");
     fill(c);
-    noStroke();
+    rect(this.x, this.y, this.width, this.height);
+    this.x -= 4;
+  }
+
+  drawLevel4() {
+    // Level 4 look
+    let c = color("coral");
+    fill(c);
     rect(this.x, this.y, this.width, this.height);
     this.x -= 4;
   }
@@ -36,6 +42,7 @@ class Obstacle2 extends Obstacle1 {
   }
 
   draw() {
+    // Level 1 and 2 look
     let c = color("purple");
     fill(c);
     noStroke();
@@ -44,6 +51,7 @@ class Obstacle2 extends Obstacle1 {
   }
 
   drawLevel3() {
+    // Level 3 look
     let c = color("aquamarine");
     fill(c);
     noStroke();
@@ -59,6 +67,7 @@ class Obstacle2 extends Obstacle1 {
     }
   
     draw() {
+      // Level 1 and 2 look
       let c = color("pink");
       fill(c);
       noStroke();
@@ -67,6 +76,7 @@ class Obstacle2 extends Obstacle1 {
     }
 
     drawLevel3() {
+      // Level 3 look
       let c = color("deepPink");
       fill(c);
       noStroke();
@@ -83,6 +93,7 @@ class Obstacle2 extends Obstacle1 {
     }
     
     draw() {
+      // Level 1 and 2 look
       let c = color("darkgreen");
       fill(c);
       noStroke();
@@ -91,6 +102,7 @@ class Obstacle2 extends Obstacle1 {
     }
 
     drawLevel3() {
+      // Level 3 look
       let c = color("darkturquoise");
       fill(c);
       noStroke();
@@ -108,6 +120,7 @@ class Obstacle2 extends Obstacle1 {
     }
     
     draw() {
+      // Level 1 and 2 look
       let c = color("navy");
       fill(c);
       noStroke();
@@ -116,6 +129,7 @@ class Obstacle2 extends Obstacle1 {
     }
 
     drawLevel3() {
+      // Level 3 look
       let c = color("darkviolet");
       fill(c);
       noStroke();
