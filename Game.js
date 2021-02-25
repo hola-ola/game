@@ -3,15 +3,16 @@ class Game {
     this.player = new Player();
     this.obstaclesSquare = [];
     this.obstaclesRound = [];
-    this.collisionCount = -100;
+    this.collisionCount = 0;
     this.timeCount = 0;
-    this.pointsCount = 30;
-    this.levelCount = 1;
+    this.pointsCount = 0;
+    this.levelCount = 0;
     this.background = "antiquewhite";
   }
   draw() {
-    this.player.draw();
 
+    // Draw the player
+    this.player.draw();
     if (keyIsDown(38)) {
       this.player.runUp();
     }
@@ -19,26 +20,26 @@ class Game {
       this.player.runDown();
     }
 
-    // Level 1: Create square obstacles (frequency of appearance)
-    if (frameCount % 120 === 0) {
-      this.obstaclesSquare.push(new Obstacle1());
+    if (frameCount % 60 === 0) {
+      this.countTime();
     }
 
-    if (frameCount % 120 === 0) {
+    // SQUARE OBSTACLES
+    // Level 1: Set the frequency of appearance for square obstalces
+    if (frameCount % 120 === 0 && this.levelCount === 1) {
+      this.obstaclesSquare.push(new Obstacle1());
       this.obstaclesSquare.push(new Obstacle5());
     }
 
-    // Level 2 and up: Create square obstacles (frequency of appearance)
+    // Level 2 & up: Set the frequency of appearance for square obstalces
     if (this.levelCount !== 1) {
       if (frameCount % 90 === 0) {
         this.obstaclesSquare.push(new Obstacle1());
-      }
-
-      if (frameCount % 90 === 0) {
         this.obstaclesSquare.push(new Obstacle5());
       }
     }
 
+    // The look of the obstacles
     this.obstaclesSquare.forEach((obstacle, index) => {
       if (this.levelCount < 3) {
         obstacle.drawLevel1();
@@ -50,78 +51,93 @@ class Game {
         // Level 4 look
       } else if (this.levelCount === 4) {
         obstacle.drawLevel4();
-      }
 
+        // Level 5 look
+      } else if (this.levelCount === 5) {
+        obstacle.drawLevel5();
+      }
+      
+      // Collision check
       if (this.collisionCheckSquare(obstacle, this.player)) {
         obstacle.isColliding = true;
         this.collisionCount += 1;
       }
 
+      // Removing obstacles from the array
       if (obstacle.x + obstacle.width <= 0) {
         this.obstaclesSquare.splice(index, 1);
       }
     });
 
-    // Level 1: Create round obstacles (frequency of appearance)
-    if (frameCount % 180 === 0) {
+    // CIRCLE OBSTACLES
+    // Level 1: Set the frequency of appearance for circle obstalces
+    if (frameCount % 180 === 0 && this.levelCount === 1) {
       this.obstaclesRound.push(new Obstacle2());
     }
-
-    if (frameCount % 60 === 0) {
+    if (frameCount % 60 === 0 && this.levelCount === 1) {
       this.obstaclesRound.push(new Obstacle3());
     }
-
-    if (frameCount % 120 === 0) {
+    if (frameCount % 120 === 0 && this.levelCount === 1) {
       this.obstaclesRound.push(new Obstacle4());
     }
 
-    // Level 2 and up: Create round obstacles (frequency of appearance)
+    // Level 2 & up: Set the frequency of appearance for circle obstalces
     if (this.levelCount !== 1) {
       if (frameCount % 170 === 0) {
         this.obstaclesRound.push(new Obstacle2());
       }
-
       if (frameCount % 50 === 0) {
         this.obstaclesRound.push(new Obstacle3());
       }
-
       if (frameCount % 110 === 0) {
         this.obstaclesRound.push(new Obstacle4());
       }
     }
 
+    // The look of the obstacles
     this.obstaclesRound.forEach((obstacle, index) => {
       if (this.levelCount < 3) {
-        obstacle.draw();
-        // Level 3 colors
-      } else if ((this.levelCount = 3)) {
+        obstacle.drawLevel1();
+        
+        // Level 3 look
+      } else if (this.levelCount === 3) {
         obstacle.drawLevel3();
+
+        // Level 4 look
+      } else if (this.levelCount === 4) {
+        obstacle.drawLevel4();
+
+        // Level 5 look
+      } else if (this.levelCount === 5) {
+        obstacle.drawLevel5();
       }
 
+      // Collision check
       if (this.collisionCheckRound(obstacle, this.player)) {
         obstacle.isColliding = true;
         this.collisionCount += 1;
         console.log("Collided with a circle!");
       }
 
+      // Removing obstacles from the array
       if (obstacle.x + obstacle.d <= 0) {
         this.obstaclesRound.splice(index, 1);
       }
     });
 
-    // Count life leve of the player based on the number of collisions
+    // // Count life leve of the player based on the number of collisions
 
-    if (this.collisionCount == 1) {
+    if (this.collisionCount === 1) {
       lifeLevel6.style.visibility = "hidden";
-    } else if (this.collisionCount == 2) {
+    } else if (this.collisionCount === 2) {
       lifeLevel5.style.visibility = "hidden";
-    } else if (this.collisionCount == 3) {
+    } else if (this.collisionCount === 3) {
       lifeLevel4.style.visibility = "hidden";
-    } else if (this.collisionCount == 4) {
+    } else if (this.collisionCount === 4) {
       lifeLevel3.style.visibility = "hidden";
-    } else if (this.collisionCount == 5) {
+    } else if (this.collisionCount === 5) {
       lifeLevel2.style.visibility = "hidden";
-    } else if (this.collisionCount == 6) {
+    } else if (this.collisionCount === 6) {
       lifeLevel1.style.visibility = "hidden";
       console.log("You are dead");
       noLoop();
@@ -179,8 +195,6 @@ class Game {
 
   // Count the time up
   countTime() {
-    let timeCounter = document.getElementById("time-counter");
-
     let hours = Math.floor(this.timeCount / 3600);
     let minutes = Math.floor(this.timeCount / 60);
     let seconds = this.timeCount % 60;
@@ -190,12 +204,13 @@ class Game {
 
     if (this.collisionCount < 6) {
       this.timeCount++;
+      this.countPoints();
+      this.countLevel();
     }
   }
 
   // Count points based on survival time
   countPoints() {
-    let pointsCounter = document.getElementById("points-counter");
     // To correct later – five should become 10 or higher
     if (this.timeCount % 3 == 1 && this.timeCount > 3) {
       this.pointsCount += 10;
@@ -205,13 +220,12 @@ class Game {
 
   // Count levels based on the number of points
   countLevel() {
-    let levelCounter = document.getElementById("level-counter");
     // Points needed to get to level 2 – to correct later
-    if (this.pointsCount == 10) {
+    if (this.pointsCount === 10) {
       this.levelCount = 2;
     }
     // Points needed to get to level 3 – to correct later
-    if (this.pointsCount == 20) {
+    if (this.pointsCount === 20) {
       this.levelCount = 3;
     }
     // Points needed to get to level 4 – to correct later
@@ -220,15 +234,12 @@ class Game {
     }
     // Points needed to get to level 5 – to correct later
     if (this.pointsCount >= 40) {
-      this.levelCount = 4;
+      this.levelCount = 5;
     }
+    
     levelCounter.innerText = `Level: ${this.levelCount}`;
 
     //Elements to change when level changes
-    let button = document.getElementById("reset");
-    let title = document.getElementById("title");
-    let counters = document.getElementById("counters");
-    let body = document.querySelector("body");
 
     // Level 2
     if (this.levelCount == 2) {
@@ -258,6 +269,16 @@ class Game {
       body.classList.add("body4");
       this.background = "darkblue";
       this.player.color = "antiquewhite";
+    }
+
+    // Level 5
+    if (this.levelCount == 5) {
+      button.classList.add("btn5");
+      title.classList.add("title5");
+      counters.classList.add("count5");
+      body.classList.add("body5");
+      this.background = "#8c1aff";
+      this.player.color = "black";
     }
   }
   // In order to adjust the player and the obstacles to new level, look for line 13;

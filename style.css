@@ -18,7 +18,11 @@ body {
 }
 
 .body4 {
-    background-color: deeppink;
+    background-color: Magenta;
+}
+
+.body5 {
+    background-color: lime;
 }
 
 .p5Canvas {
@@ -48,6 +52,10 @@ h1 {
 
 .title4 {
     color: darkblue;
+}
+
+.title5 {
+    color: indigo;
 }
 
 #counters {
@@ -80,6 +88,10 @@ h1 {
 
 .count4 {
     color: darkblue;
+}
+
+.count5 {
+    color: indigo;
 }
 
 .life-level {
@@ -146,7 +158,12 @@ button {
     color: darkviolet;
 }
 
-.btn3 {
+.btn4 {
     background-color: greenyellow;
     color: indigo;
+}
+
+.btn5 {
+    background-color: indigo;
+    color: lime;
 }

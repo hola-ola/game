@@ -1,4 +1,4 @@
-// Square
+// THE SQUARE OBSTACLE
 class Obstacle1 {
   constructor() {
     this.width = 50;
@@ -6,15 +6,15 @@ class Obstacle1 {
     this.x = width;
     this.y = random(0, height);
     this.isColliding = false;
-    this.firstcolor = true;
+    this.defaultSetup = true;
   }
 
-  // Level 1 and 2 look
+  // Level 1 & 2 look
   drawLevel1() {
     let c = color("goldenrod");
     fill(c);
     rect(this.x, this.y, this.width, this.height);
-    this.x -= 4;
+    this.x -= 3;
   }
 
   // Level 3 look
@@ -27,44 +27,38 @@ class Obstacle1 {
 
   // Level 4 look
   drawLevel4() {
-    console.log("RUUNG");
-    let c = "white";
-    console.log(frameCount, frameCount % 30 === 0);
-    if (frameCount % 30 === 0) {
-      console.log("RUNNING INSIDE CHECK");
-      this.firstcolor = !this.firstcolor;
+    if (frameCount % 24 === 0) {
+      this.defaultSetup = !this.defaultSetup;
     }
-    // console.log("AFTER CHANGE?: ", this.firstcolor)
-
-    if (this.firstcolor) {
-      c = "white";
-    } else {
-      c = "black";
-    }
-    console.log("C: ", c);
+    let c = this.defaultSetup ? "greenyellow" : "DeepPink";
     fill(c);
     rect(this.x, this.y, this.width, this.height);
     this.x -= 4;
   }
 
+  // Level 5 look
   drawLevel5() {
-    // Level 3 look
-    let c = color("green");
+    if (frameCount % 24 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+    let c = this.defaultSetup ? "greenyellow" : "DeepPink";
+    this.width = this.defaultSetup ? this.width - 1 : this.width + 1;
+    this.height = this.defaultSetup ? this.height - 1 : this.height + 1;
     fill(c);
     rect(this.x, this.y, this.width, this.height);
     this.x -= 4;
   }
 }
 
-// The medium ball
+// THE MEDIUM BALL OBSTACLE
 class Obstacle2 extends Obstacle1 {
   constructor(x, y, isColliding) {
     super(x, y, isColliding);
     this.d = 50;
   }
 
-  draw() {
-    // Level 1 and 2 look
+  // Level 1 & 2 look
+  drawLevel1() {
     let c = color("purple");
     fill(c);
     noStroke();
@@ -72,24 +66,50 @@ class Obstacle2 extends Obstacle1 {
     this.x -= 2;
   }
 
+  // Level 3 look
   drawLevel3() {
-    // Level 3 look
     let c = color("aquamarine");
     fill(c);
     noStroke();
     circle(this.x, this.y, this.d);
     this.x -= 3;
   }
+
+  // Level 4 look
+  drawLevel4() {
+    if (frameCount % 21 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "yellow" : "MediumSlateBlue";
+    fill(c);
+    circle(this.x, this.y, this.d);
+    this.x -= 3;
+  }
+
+  // Level 5 look
+  drawLevel5() {
+    if (frameCount % 21 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "yellow" : "DodgerBlue";
+    this.d = this.defaultSetup ? this.d - 1 : this.d + 1;
+    fill(c);
+    circle(this.x, this.y, this.d);
+    this.x -= 3;
+  }
 }
-// The tiny ball
+
+// THE TINY BALL OBSTACLE
 class Obstacle3 extends Obstacle2 {
   constructor(x, y, isColliding, d) {
     super(x, y, isColliding);
     this.d = 30;
   }
 
-  draw() {
-    // Level 1 and 2 look
+  // Level 1 & 2 look
+  drawLevel1() {
     let c = color("pink");
     fill(c);
     noStroke();
@@ -97,25 +117,50 @@ class Obstacle3 extends Obstacle2 {
     this.x -= 5;
   }
 
+  // Level 3 look
   drawLevel3() {
-    // Level 3 look
     let c = color("deepPink");
     fill(c);
     noStroke();
     circle(this.x, this.y, this.d);
     this.x -= 6;
   }
+
+  // Level 4 look
+  drawLevel4() {
+    if (frameCount % 22 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "Turquoise" : "DarkOrange";
+    fill(c);
+    circle(this.x, this.y, this.d);
+    this.x -= 6;
+  }
+
+  // Level 5 look
+  drawLevel5() {
+    if (frameCount % 22 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "Turquoise" : "DarkOrange";
+    this.d = this.defaultSetup ? this.d - 1 : this.d + 1;
+    fill(c);
+    circle(this.x, this.y, this.d);
+    this.x -= 6;
+  }
 }
 
-// The biggest ball
+// THE BIGGEST BALL OBSTACLE
 class Obstacle4 extends Obstacle2 {
   constructor(x, y, isColliding, d) {
     super(x, y, isColliding);
     this.d = 60;
   }
 
-  draw() {
-    // Level 1 and 2 look
+  // Level 1 and 2 look
+  drawLevel1() {
     let c = color("darkgreen");
     fill(c);
     noStroke();
@@ -123,17 +168,42 @@ class Obstacle4 extends Obstacle2 {
     this.x -= 4;
   }
 
+  // Level 3 look
   drawLevel3() {
-    // Level 3 look
     let c = color("darkturquoise");
     fill(c);
     noStroke();
     circle(this.x, this.y, this.d);
     this.x -= 5;
   }
+
+  // Level 4 look
+  drawLevel4() {
+    if (frameCount % 18 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "lime" : "magenta";
+    fill(c);
+    circle(this.x, this.y, this.d);
+    this.x -= 5;
+  }
+
+  // Level 5 look
+  drawLevel5() {
+    if (frameCount % 23 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "lime" : "magenta";
+    this.d = this.defaultSetup ? this.d - 1 : this.d + 1;
+    fill(c);
+    circle(this.x, this.y, this.d);
+    this.x -= 5;
+  }
 }
 
-// #5 Obstacle: navy rectangle
+// THE RECTANGLE OBSTACLE
 class Obstacle5 extends Obstacle1 {
   constructor(x, y, width, height, isColliding) {
     super(x, y, isColliding);
@@ -141,21 +211,48 @@ class Obstacle5 extends Obstacle1 {
     this.height = 40;
   }
 
+  // Level 1 and 2 look
   drawLevel1() {
-    // Level 1 and 2 look
-    let c = color("navy");
+    let c = color("darkblue");
     fill(c);
     noStroke();
     rect(this.x, this.y, this.width, this.height);
     this.x -= 3;
   }
 
+  // Level 3 look
   drawLevel3() {
-    // Level 3 look
     let c = color("darkviolet");
     fill(c);
     noStroke();
     rect(this.x, this.y, this.width, this.height);
     this.x -= 4;
   }
+
+  // Level 4 look
+  drawLevel4() {
+    if (frameCount % 15 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "aqua" : "Chartreuse";
+    fill(c);
+    rect(this.x, this.y, this.width, this.height);
+    this.x -= 4;
+  }
+
+  // Level 5 look
+  drawLevel5() {
+    if (frameCount % 15 === 0) {
+      this.defaultSetup = !this.defaultSetup;
+    }
+
+    let c = this.defaultSetup ? "aqua" : "Chartreuse";
+    this.width = this.defaultSetup ? this.width - 0.5 : this.width + 0.5;
+    this.height = this.defaultSetup ? this.height - 0.5 : this.height + 0.5;
+    fill(c);
+    rect(this.x, this.y, this.width, this.height);
+    this.x -= 4;
+  }
+  
 }

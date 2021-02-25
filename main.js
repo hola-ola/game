@@ -1,16 +1,15 @@
-
-function preload() {};
+function preload() {}
 
 let game = new Game();
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
-  setInterval(countTime, 1000);
+  // setInterval(countTime, 1000);
 }
 
 function draw() {
-    background(game.background);
-    game.draw();
+  background(game.background);
+  game.draw();
 }
 
 function countTime() {
@@ -18,6 +17,3 @@ function countTime() {
   game.countPoints();
   game.countLevel();
 }
-
-
-
