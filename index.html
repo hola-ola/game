@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Let's play!</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js"></script>
     <link href="./style.css" rel="stylesheet">
   </head>
   <body class="body1">
@@ -14,16 +15,30 @@
       <div class="div-left"></div>
 
       <div class="div-center">
-        <div class="div-center-left"></div>
-        <div class="div-center-view"></div>
-        <div class="div-center-right"></div>
+        <div class="div-center-top">
+        </div>
+
+        <div class="div-center-middle">
+          <h2>The rules of the game</h2>
+          <p>Crazy virus has attacked the world. Make sure not to get infected!</li>
+          <p>When you think you got it – the virus mutates. Now the virus got ya.</li>
+          <p>YOLST
+            <br>You Only Live Six Times</li>
+            <button>Let me play!</button>
+        </div>
+
+        <div class="div-center-bottom">
+          
+        </div>
+      </div>
 
       <div class="div-right"></div>
-      </div>
 
     </div>
 
-    <!--The title of the game-->
+    <!--The game file-->
+    <div class="game">
+          <!--The title of the game-->
     <div class="intro">
       <h1 id="title" class="title1">The Simple Game</h1>
     </div>
@@ -62,6 +77,7 @@
 
     <!--Reset button-->
     <button class="btn1" id="reset" onclick="location.reload()">Play again!</button>
+    </div>
    
    
     <script src="constants.js"></script>

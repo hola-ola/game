@@ -1,4 +1,6 @@
-function preload() {}
+function preload() {
+  music = loadSound("./sound/ten-walls-walking-with-elephants-original-mix.mp3")
+}
 
 let game = new Game();
 
@@ -10,6 +12,14 @@ function setup() {
 function draw() {
   background(game.background);
   game.draw();
+}
+
+function mousePressed() {
+  if (music.isPlaying()) {
+    music.stop();
+  } else {
+    music.play();
+  }
 }
 
 function countTime() {
