@@ -14,7 +14,8 @@ let lifeLevel1 = document.getElementById("level-1");
 let timeCounter = document.getElementById("time-counter");
 let pointsCounter = document.getElementById("points-counter");
 let levelCounter = document.getElementById("level-counter");
-let button = document.getElementById("reset");
+let resetButton = document.getElementById("reset");
+
 let title = document.getElementById("title");
 let counters = document.getElementById("counters");
 let body = document.querySelector("body");

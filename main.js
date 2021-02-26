@@ -1,12 +1,11 @@
 function preload() {
-  music = loadSound("./sound/ten-walls-walking-with-elephants-original-mix.mp3")
+  music = loadSound("./sound/ten-walls-walking-with-elephants-original-mix.mp3");
 }
 
 let game = new Game();
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
-  // setInterval(countTime, 1000);
 }
 
 function draw() {

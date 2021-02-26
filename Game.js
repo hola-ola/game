@@ -243,7 +243,7 @@ class Game {
 
     // Level 2
     if (this.levelCount == 2) {
-      button.classList.add("btn2");
+      resetButton.classList.add("btn2");
       title.classList.add("title2");
       counters.classList.add("count2");
       body.classList.add("body2");
@@ -253,7 +253,7 @@ class Game {
 
     // Level 3
     if (this.levelCount == 3) {
-      button.classList.add("btn3");
+      resetButton.classList.add("btn3");
       title.classList.add("title3");
       counters.classList.add("count3");
       body.classList.add("body3");
@@ -263,7 +263,7 @@ class Game {
 
     // Level 4
     if (this.levelCount == 4) {
-      button.classList.add("btn4");
+      resetButton.classList.add("btn4");
       title.classList.add("title4");
       counters.classList.add("count4");
       body.classList.add("body4");
@@ -273,7 +273,7 @@ class Game {
 
     // Level 5
     if (this.levelCount == 5) {
-      button.classList.add("btn5");
+      resetButton.classList.add("btn5");
       title.classList.add("title5");
       counters.classList.add("count5");
       body.classList.add("body5");
