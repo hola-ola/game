@@ -13,13 +13,14 @@ function draw() {
   game.draw();
 }
 
-function mousePressed() {
-  if (music.isPlaying()) {
-    music.stop();
-  } else {
-    music.play();
+  function mousePressed() {
+    if (music.isPlaying() || game.collisionCount > 5) {
+      music.stop();
+    } else {
+      music.play();
+      startPage.style.visibility = "hidden";
+    }
   }
-}
 
 function countTime() {
   game.countTime();

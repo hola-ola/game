@@ -8,6 +8,7 @@ class Game {
     this.pointsCount = 0;
     this.levelCount = 0;
     this.background = "antiquewhite";
+    this.gameOn = true;
   }
   draw() {
 
@@ -140,6 +141,8 @@ class Game {
     } else if (this.collisionCount === 6) {
       lifeLevel1.style.visibility = "hidden";
       console.log("You are dead");
+      this.gameOn = false;
+      console.log(this.gameOn);
       noLoop();
     }
   }

@@ -10,21 +10,9 @@
   </head>
   <body class="body1">
 
-    <!--Intro screen-->
-    <div class="intro-screen">
-      <div class="div-left"></div>
-
-      <div class="div-center">
-        <div class="div-center-left"></div>
-        <div class="div-center-view"></div>
-        <div class="div-center-right"></div>
-
-      <div class="div-right"></div>
-      </div>
-
-    </div>
-
-    <!--The title of the game-->
+    <!--The game-->
+    <div class="game">
+      <!--The title of the game-->
     <div class="intro">
       <h1 id="title" class="title1">The Simple Game</h1>
     </div>
@@ -62,9 +50,23 @@
     </div>
 
     <!--Reset button-->
-    <button class="btn1" id="reset" onclick="location.reload()">Play again!</button>
-   
-   
+    <div class="reset"> 
+      <button class="btn1" id="reset" onclick="location.reload()">Play again!</button>
+    </div>
+  </div>
+
+   <!--Start page-->
+   <div id="start-page">
+    <div class="start-instructions">
+      <h2>The rules of the game</h2>
+        <p>Crazy virus has attacked the world. <br> Make sure not to get infected!</p>
+        <p>The virus mutates. <br>You gotta deal with it!</p>
+        <p><span>YOLST</span><br> You Only Live Six Times</p>
+        <p id="click-start">Click to start!</p>
+    </div>
+  </div>
+
+   <!--Connection with JavaScript files-->
     <script src="constants.js"></script>
     <script src="Player.js"></script>
     <script src="Obstacle.js"></script>
