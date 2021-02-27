@@ -215,7 +215,7 @@ class Game {
   // Count points based on survival time
   countPoints() {
     // To correct later – five should become 10 or higher
-    if (this.timeCount % 3 == 1 && this.timeCount > 3) {
+    if (this.timeCount % 10 == 1 && this.timeCount > 10) {
       this.pointsCount += 10;
       pointsCounter.innerText = `Points: ${this.pointsCount}`;
     }
