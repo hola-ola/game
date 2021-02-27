@@ -20,6 +20,10 @@ class Game {
     if (keyIsDown(40)) {
       this.player.runDown();
     }
+    if (this.levelCount > 3) {
+      this.player.width = 30;
+      this.player.height = 30;
+    }
 
     if (frameCount % 60 === 0) {
       this.countTime();
