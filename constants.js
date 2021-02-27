@@ -2,7 +2,7 @@ let music;
 
 const WIDTH = 1200;
 const HEIGHT = 500;
-const GRAVITY = 0.4;
+const GRAVITY = 0.2;
 
 const lifeLevel6 = document.getElementById("level-6");
 const lifeLevel5 = document.getElementById("level-5");

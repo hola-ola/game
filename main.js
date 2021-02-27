@@ -14,12 +14,8 @@ function draw() {
 }
 
   function mousePressed() {
-    if (music.isPlaying() || game.collisionCount > 5) {
-      music.stop();
-    } else {
       music.play();
       startPage.style.visibility = "hidden";
-    }
   }
 
 function countTime() {

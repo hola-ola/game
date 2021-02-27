@@ -6,7 +6,7 @@ class Game {
     this.collisionCount = 0;
     this.timeCount = 0;
     this.pointsCount = 0;
-    this.levelCount = 0;
+    this.levelCount = 1;
     this.background = "antiquewhite";
     this.gameOn = true;
   }
@@ -32,9 +32,33 @@ class Game {
       this.obstaclesSquare.push(new Obstacle5());
     }
 
-    // Level 2 & up: Set the frequency of appearance for square obstalces
-    if (this.levelCount !== 1) {
+    // Level 2: Set the frequency of appearance for square obstalces
+    if (this.levelCount === 2) {
       if (frameCount % 90 === 0) {
+        this.obstaclesSquare.push(new Obstacle1());
+        this.obstaclesSquare.push(new Obstacle5());
+      }
+    }
+
+    // Level 3: Set the frequency of appearance for square obstalces
+    if (this.levelCount === 3) {
+      if (frameCount % 70 === 0) {
+        this.obstaclesSquare.push(new Obstacle1());
+        this.obstaclesSquare.push(new Obstacle5());
+      }
+    }
+
+    // Level 4: Set the frequency of appearance for square obstalces
+    if (this.levelCount === 4) {
+      if (frameCount % 50 === 0) {
+        this.obstaclesSquare.push(new Obstacle1());
+        this.obstaclesSquare.push(new Obstacle5());
+      }
+    }
+
+    // Level 5: Set the frequency of appearance for square obstalces
+    if (this.levelCount === 5) {
+      if (frameCount % 40 === 0) {
         this.obstaclesSquare.push(new Obstacle1());
         this.obstaclesSquare.push(new Obstacle5());
       }
@@ -82,15 +106,54 @@ class Game {
       this.obstaclesRound.push(new Obstacle4());
     }
 
-    // Level 2 & up: Set the frequency of appearance for circle obstalces
-    if (this.levelCount !== 1) {
-      if (frameCount % 170 === 0) {
+    // Level 2: Set the frequency of appearance for circle obstalces
+    if (this.levelCount === 2) {
+      if (frameCount % 150 === 0) {
         this.obstaclesRound.push(new Obstacle2());
       }
       if (frameCount % 50 === 0) {
         this.obstaclesRound.push(new Obstacle3());
       }
+      if (frameCount % 100 === 0) {
+        this.obstaclesRound.push(new Obstacle4());
+      }
+    }
+
+    // Level 3: Set the frequency of appearance for circle obstalces
+    if (this.levelCount === 3) {
+      if (frameCount % 130 === 0) {
+        this.obstaclesRound.push(new Obstacle2());
+      }
+      if (frameCount % 30 === 0) {
+        this.obstaclesRound.push(new Obstacle3());
+      }
+      if (frameCount % 80 === 0) {
+        this.obstaclesRound.push(new Obstacle4());
+      }
+    }
+
+    // Level 4: Set the frequency of appearance for circle obstalces
+    if (this.levelCount === 4) {
       if (frameCount % 110 === 0) {
+        this.obstaclesRound.push(new Obstacle2());
+      }
+      if (frameCount % 20 === 0) {
+        this.obstaclesRound.push(new Obstacle3());
+      }
+      if (frameCount % 60 === 0) {
+        this.obstaclesRound.push(new Obstacle4());
+      }
+    }
+
+    // Level 5: Set the frequency of appearance for circle obstalces
+    if (this.levelCount === 5) {
+      if (frameCount % 90 === 0) {
+        this.obstaclesRound.push(new Obstacle2());
+      }
+      if (frameCount % 18 === 0) {
+        this.obstaclesRound.push(new Obstacle3());
+      }
+      if (frameCount % 70 === 0) {
         this.obstaclesRound.push(new Obstacle4());
       }
     }
