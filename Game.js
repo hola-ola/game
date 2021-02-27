@@ -6,7 +6,7 @@ class Game {
     this.collisionCount = 0;
     this.timeCount = 0;
     this.pointsCount = 0;
-    this.levelCount = 0;
+    this.levelCount = 1;
     this.background = "antiquewhite";
     this.gameOn = true;
   }

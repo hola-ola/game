@@ -14,6 +14,9 @@ function draw() {
 }
 
   function mousePressed() {
+    if (music.isPlaying) {
+      music.stop();
+    }
       music.play();
       startPage.style.visibility = "hidden";
   }
