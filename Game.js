@@ -6,7 +6,7 @@ class Game {
     this.collisionCount = 0;
     this.timeCount = 0;
     this.pointsCount = 0;
-    this.levelCount = 1;
+    this.levelCount = 0;
     this.background = "antiquewhite";
     this.gameOn = true;
   }
@@ -291,19 +291,19 @@ class Game {
   // Count levels based on the number of points
   countLevel() {
     // Points needed to get to level 2 – to correct later
-    if (this.pointsCount === 10) {
+    if (this.pointsCount === 50) {
       this.levelCount = 2;
     }
     // Points needed to get to level 3 – to correct later
-    if (this.pointsCount === 20) {
+    if (this.pointsCount === 100) {
       this.levelCount = 3;
     }
     // Points needed to get to level 4 – to correct later
-    if (this.pointsCount == 30) {
+    if (this.pointsCount == 200) {
       this.levelCount = 4;
     }
     // Points needed to get to level 5 – to correct later
-    if (this.pointsCount >= 40) {
+    if (this.pointsCount >= 300) {
       this.levelCount = 5;
     }
     
